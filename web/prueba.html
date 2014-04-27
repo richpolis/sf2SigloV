@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Documento</title>
+	<style>
+	    li{ list-style: none; margin: 10px;}
+		.item { height: 300px; width: 300px; background-color: red;}
+		.item.w2 { height: 200px; background-color:  green;}
+		.item.w3 { height: 150px; background-color:  orange;}
+	</style>
+	
+</head>
+<body>
+	<div id="container">
+		<ul>
+			<li class="item"><a href=""></a></li>
+			<li class="item w3"><a href=""></a></li>
+			<li class="item w2"><a href=""></a></li>
+			<li class="item"><a href=""></a></li>
+			<li class="item w2"><a href=""></a></li>
+			<li class="item"><a href=""></a></li>
+			<li class="item w2"><a href=""></a></li>
+			<li class="item w3"><a href=""></a></li>
+			<li class="item w2"><a href=""></a></li>
+		</ul>
+	</div>
+	<script src="js/masonry.pkgd.min.js"></script>
+	<script>
+		var container = document.querySelector('#container');
+		var msnry = new Masonry( container, {
+		  // options
+		  columnWidth: 200,
+		  itemSelector: '.item'
+		});
+	</script>
+</body>
+</html>

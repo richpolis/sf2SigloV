@@ -1,0 +1,34 @@
+frontend:
+    resource: "@FrontendBundle/Controller/DefaultController.php"
+    type:     annotation
+    prefix:   /
+
+backend:
+    resource: "@BackendBundle/Controller/DefaultController.php"
+    type:     annotation
+    prefix:   /backend
+
+usuarios:
+    type:     rest
+    prefix:   /api
+    resource: "@BackendBundle/Resources/config/routing.yml"
+
+publicaciones_fosrest_api:
+    type:     rest
+    prefix:   /api
+    resource: "@PublicacionesBundle/Resources/config/routing.yml"
+
+NelmioApiDocBundle:
+  resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+  prefix:   /api/doc
+
+_imagine:
+    resource: .
+    type:     imagine
+
+
+
+#publicaciones_richpolis_api:
+#    type:     annotation
+#    prefix:   /api
+#    resource: "@PublicacionesBundle/Resources/config/routing_publicaciones.yml"

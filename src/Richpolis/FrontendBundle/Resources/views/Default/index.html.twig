@@ -1,0 +1,107 @@
+{% extends 'FrontendBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{asset('css/jquery.bxslider.css')}}"/>
+{% endblock %}
+
+
+{% block menu_secundario %}
+    <div class="menu-secundario">
+        <ul>
+            <li class="menu-secundario-item">
+                <a href="#portada" class="portada active">
+                   PORTADA
+                </a>
+            </li>
+            {% for categoria in categorias %}
+                <li class="menu-secundario-item">
+                    <a href="#categoria/{{categoria.slug}}">
+                        {{categoria.nombre}}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+        <span class="flechita">&nbsp;</span>
+    </div>
+{% endblock %}
+
+{% block contenido %}
+<section class="contenido">
+    <article class="encabezado">
+      <ul class="slider1">  {# divImagenes #}
+          {% for publicacion in  publicaciones %}
+          <li class="slide {% if loop.index == 1 %} active {% endif %}"> {# li #}
+            {% set indice = 0 %}
+            {% for galeria in publicacion.galerias  %}
+              {% if indice == 0 and galeria.isImagen %}
+              {{ galeria.archivoView | raw }}
+              {% set indice = indice + 1 %}
+              {% endif %}
+            {% else %}
+              <!--img src="http://placehold.it/638x369&text=FooBar{{publicacion.titulo}}" /-->
+            {% endfor %}
+            <div class="slide-titulo">
+                {{publicacion.titulo}}
+            </div>
+            <div class="slide-descripcion">
+                {{ publicacion.descripcionCorta | raw }}
+                <span class="slide-descripcion-boton" data-url="publicacion/{{publicacion.slug}}">&nbsp;</span>
+            </div>
+          </li>
+          {% endfor %}
+     </ul>
+    </article>
+    <article class="publicaciones">
+        
+    </article>
+    <article class="single-article">
+        
+    </article>
+</section>
+    {% include 'FrontendBundle:Default:templates.html.twig' with {'form': form } %}
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=611621672201000";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script src="{{asset('bundles/frontend/js/app.js')}}"></script> 
+<!--script src="{{asset('bundles/frontend/js/sliderRichpolis.js')}}"></script-->
+<script src="{{asset('js/bxslider/jquery.fitvids.js')}}"></script>
+<script src="{{asset('js/jquery.bxslider.js')}}"></script>
+<script src="{{asset('js/jquery.masonry.min.js')}}"></script> 
+<script src="{{asset('bundles/frontend/js/main.js')}}"></script>  
+<script type="text/javascript">
+$(function(){
+    window.api = {
+      url: '{{path('api_1_get_publicacions')}}',
+      urlCategorias: '{{path('api_1_get_categorias')}}',
+      status: 'portada',
+      modelo: {
+        id: 0  
+      },
+    };
+    
+    $('.slider1').bxSlider({
+        mode: 'fade',
+        tickerHover: true,
+        auto: true,
+        pause: 8000,
+        slideWidth: 638,
+        controls: false,
+        onSlideNext: function($slideElement, oldIndex, newIndex){
+            $(".slider1 li").removeClass("active");
+            $slideElement.addClass("active");
+        }
+    });
+});
+</script> 
+{% endblock %}
+

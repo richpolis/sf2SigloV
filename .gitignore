@@ -1,0 +1,11 @@
+/web/bundles/
+/app/cache/*
+/app/logs/*
+/build/
+/vendor/
+/bin/
+/composer.phar
+/data
+/nbproject/private/
+/web/uploads/
+/web/.htaccess

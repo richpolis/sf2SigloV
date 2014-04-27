@@ -1,0 +1,72 @@
+{%if error is not defined%}
+    {%set error=false%}
+{%endif%}
+{%if ok is not defined%}
+    {%set ok=false%}
+{%endif%}
+{%if mensaje is not defined%}
+    {%set mensaje=""%}
+{%endif%}
+
+<div id="formulario_contacto">
+     <form onsubmit="return false;" action="{{path('frontend_contacto')}}" method="post" class="form-contacto {%if error == true%}invalid{%endif%} {%if ok == true%}sent{%endif%}" novalidate="novalidate" role="form">
+          <div class="form-group">
+             {{ form_label(form.name) }}
+                 {{ form_widget(form.name, {'attr': {'class': 'form-control','placeholder':'nombre'}}) }}
+             <span class="errores"> 
+                 {{ form_errors(form.name) }}
+             </span>
+         </div>
+         <div class="form-group">
+             {{ form_label(form.email) }}
+                 {{ form_widget(form.email, {'attr': {'class': 'form-control','placeholder':'email'}}) }}
+             <span class="errores"> 
+                 {{ form_errors(form.email) }}
+             </span>
+         </div>
+          <div class="form-group">
+             {{ form_label(form.subject) }}
+                 {{ form_widget(form.subject, {'attr': {'class': 'form-control','placeholder':'asunto'}}) }}
+             <span class="errores"> 
+                 {{ form_errors(form.subject) }}
+             </span>
+         </div>
+         <div class="form-group">
+             {{ form_label(form.telefono) }}
+                 {{ form_widget(form.telefono, {'attr': {'class': 'form-control','placeholder':'telefono'}}) }}
+             <span class="errores"> 
+                 {{ form_errors(form.telefono) }}
+             </span>
+         </div>    
+         <div class="form-group">
+             {{ form_label(form.body) }}
+                 {{ form_widget(form.body, {'attr': {'class': 'form-control','placeholder':'mensaje'}}) }}
+             <span class="errores"> 
+                 {{ form_errors(form.body) }}
+             </span>
+         </div> 
+         <div class="form-group">
+             <input type="submit" value="Enviar" class="form-contacto-control form-submit">
+             <img class="ajax-loader" src="/images/bx_loader.gif" alt="Enviando ..." style="visibility: hidden;">
+         </div>
+         {% if ok == true and error == false%}    
+         <div class="form-response-output form-mail-sent-ok">
+             {{mensaje}}
+         </div>
+         {% elseif ok == false and error == true %}
+         <div class="form-response-output form-mail-sent-ng form-validation-errors">
+             {{mensaje}}{{form_errors(form)}}
+         </div>    
+         {% else %}
+         <div class="form-response-output">
+             {{mensaje}}
+         </div>    
+         {% endif %}    
+         {{ form_rest(form) }}    
+     </form>
+ </div>
+<script type='text/javascript'>
+$(document).on('ready',function() {   
+    iniciarlizarFormContacto();
+});
+</script>

@@ -1,0 +1,116 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Siglo V{% endblock %}
+
+{% set urlAbsolutaFoto = 'http://'
+                             ~ app.request.server.get('SERVER_NAME')
+                             ~ asset('images/keyarts/logo_250x250.png') %}
+
+{% block stylesheets %}
+    
+    {% block redes_sociales %}
+
+    <meta property="og:url" content="{{url('homepage')}}" />
+    <meta property="og:title" content="Siglo V" />
+    <meta property="og:image" content="{{urlAbsolutaFoto}}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="SigloV.com" />
+    <!--meta property="fb:admins" content="USER_ID1,USER_ID2"/-->
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@siglov">
+    <meta name="twitter:title" content="Siglo V">
+    <meta name="twitter:description" content="Descripcion de la publicaicon">
+    <meta name="twitter:creator" content="@richpolis">
+    <meta name="twitter:image:src" content="{{urlAbsolutaFoto}}">
+    <meta name="twitter:domain" content="{{url('homepage')}}">
+    <meta name="twitter:app:name:iphone" content="">
+    <meta name="twitter:app:name:ipad" content="">
+    <meta name="twitter:app:name:googleplay" content="">
+    <meta name="twitter:app:url:iphone" content="">
+    <meta name="twitter:app:url:ipad" content="">
+    <meta name="twitter:app:url:googleplay" content="">
+    <meta name="twitter:app:id:iphone" content="">
+    <meta name="twitter:app:id:ipad" content="">
+    <meta name="twitter:app:id:googleplay" content="">
+
+
+    {% endblock %}
+
+<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+<link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
+<link rel="stylesheet" href="{{asset('css/bootstrap-responsive.html')}}">
+<link rel="stylesheet" href="{{asset('css/fuentes.css')}}">
+<link rel="stylesheet" href="{{asset('css/main.css')}}">
+<style>
+    .loader {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url('/images/page-loader.gif') 50% 50% no-repeat transparent;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <header>
+            <div class="menu-principal">
+                <figure id="logo">
+                    <a href="#">
+                    <img src="{{asset('images/keyarts/logo.png')}}" alt="">
+                    </a>
+                </figure>
+                <nav class="menu">
+                    <ul>
+                        <li><a href="#" class="mostrar-categorias">categorías&nbsp;<i class="fa fa-bars"></i></a></li>
+                        <li><a href="#" class="mostrar-contacto" data-toggle="modal" data-target="#formContacto">contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+                {% block menu_secundario %}
+                <div class="menu-secundario">
+                    <ul>
+                        <li><a href="#">categoria</a></li>
+                        <li><a href="#">categoria</a></li>
+                        <li><a href="#">categoria</a></li>
+                        <li><a href="#">categoria</a></li>
+                        <li><a href="#">categoria</a></li>
+                        <li><a href="#">categoria</a></li>
+                        <li><a href="#">categoria</a></li>
+                        <li><a href="#">categoria</a></li>
+                        <li><a href="#">categoria</a></li>
+                        <li><a href="#">categoria</a></li>
+                        <li><a href="#">categoria</a></li>
+                        <li><a href="#">categoria</a></li>
+                        <li><a href="#">categoria</a></li>
+                        <li><a href="#">categoria</a></li>
+                        <li><a href="#">categoria</a></li>
+                        <li><a href="#">categoria</a></li>
+                        <li><a href="#">categoria</a></li>
+                        <li><a href="#">categoria</a></li>
+                    </ul>
+                </div>
+                {% endblock %}
+    </header>
+    {% block contenido %}{% endblock %}
+    <footer>
+
+    </footer>
+    <span class="totop"><a href="#"><i class="fa fa-chevron-up"></i></a></span>
+    <div class="loader"></div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {# JS #}
+    <!--script src="{{asset('js/jquery-2.0.2.min.js')}}"></script-->
+    <script src="{{asset('js/jquery.js')}}"></script>
+    <script src="{{asset('js/underscore-min.js')}}"></script>
+    <script src="{{asset('js/backbone-min.js')}}"></script>
+    <script src="{{asset('js/swig.js')}}"></script>
+    <script src="{{asset('js/bootstrap.js')}}"></script>
+{% endblock %}

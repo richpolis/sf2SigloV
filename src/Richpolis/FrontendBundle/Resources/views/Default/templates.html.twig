@@ -1,0 +1,113 @@
+{% raw %}
+<script type="text/template" id="item_list_template">
+        {% if galerias[0] %}
+        <figure class="publicacion-thumbnail" style="background-image: url({{galerias[0].webPathMedium}});">
+            <!--img src="{{galerias[0].webPathMedium}}" alt=""-->   
+        {% else %}
+        <figure class="publicacion-thumbnail" style="background-image: url(http://placehold.it/300x400&text=Thumbnail{{numero}});">
+            <!--img src="http://placehold.it/300x400&text=Thumbnail{{numero}}" alt=""-->
+        {% endif %}
+        </figure>
+        <h4 class="publicacion-titulo">
+        {{titulo}}
+        <span class="publicacion-fecha">
+        {{ created_at|date('d.m.Y') }}
+        </span>
+        <span class="publicacion-categoria">
+        {{ categoria.nombre }}
+        </span>
+        </h4>
+        <div class="publicacion-descorta">
+        {{ descripcion_corta|raw }}
+        </div>
+</script>
+<script type="text/template" id="article_single_template">
+        <header>
+          <hgroup>
+            <h2>{{titulo}}</h2>
+            <p>{{ descripcion_corta|raw }}</p>
+            <span class="fecha-publicacion">{{ created_at|date('d.m.Y') }}</span> 
+          </hgroup>
+        </header>
+        <div class="contenido row">
+          <ul class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+          <li class="usuario">
+              <figure class="foto-usuario">
+                <img src="/images/user2.png" style="width: 100px" />
+              </figure>
+              <div class="datos-usuario">
+                <span class="datos-usuario-username">
+                  Autor: {{ usuario.nombre }}
+                </span>
+                <br/>
+                <span class="twitter-usuario">
+                  {% if usuario.twitter %}
+                  <a href="http://www.twitter.com/{{usuario.twitter}}" target="_blank">
+                  Twitter
+                  </a>
+                  {% endif %}  
+                </span>
+                <span class="facebook-usuario">
+                  {% if usuario.facebook %}
+                  <a href="http://www.facebook.com/{{usuario.facebook}}" target="_blank">
+                    Facebook  
+                  </a>
+                   {% endif %}
+                </span>
+              </div>
+          </li>
+          <li class="redes-sociales">
+            <h3>Compartir Publicacion</h3>
+            <a class="logo-twitter" target="_blank" href="https://twitter.com/?status=Me gusta esta página http://siglov.interactivevalley.com/#publicacion/{{slug}}">
+              <img src="/images/keyarts/twitter.png" alt=""/>
+            </a>
+            <a class="logo-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://siglov.interactivevalley.com/#publicacion/{{slug}}">
+              <img src="/images/keyarts/facebook.png" alt=""/>
+            </a>
+          </li>
+          <li class="visitas">
+            <figure class="logo-visitas">
+              <img src="/images/keyarts/visitas.png" alt=""/>
+            </figure>
+            <span class="visitas">
+              {{ visitas }}
+            </span>
+          </li>
+          </ul>  
+          <div class="galeria col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div class="galeria-vista">
+              <ul class="galeria-container">
+                {% for galeria in galerias  %}
+                <li class="galeria-item" style="text-align:center;">
+                  {{ galeria.archivoView|raw }}
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="contenido-principal">
+            {{ contenido|raw }}
+
+        </div>  
+        <footer>
+          <div class="redes-sociales">
+            <h3>Compartir Publicacion</h3>
+            <a class="logo-twitter" target="_blank" href="https://twitter.com/?status=Me gusta esta página http://siglov.interactivevalley.com/#publicacion/{{slug}}">
+              <img src="/images/keyarts/twitter.png" alt=""/>
+            </a>
+            <a class="logo-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://siglov.interactivevalley.com/#publicacion/{{slug}}">
+              <img src="/images/keyarts/facebook.png" alt=""/>
+            </a>
+          </div>
+            <div class="fb-comments" data-href="http://siglov.interactivevalley.com" data-numposts="5" data-colorscheme="light"></div>
+        </footer>
+</script>
+{% endraw %}
+
+<!-- Modal -->
+<div class="modal fade" id="formContacto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+    {% include 'FrontendBundle:Default:contacto.html.twig' with {'form': form}%}
+</div>    
+</div>

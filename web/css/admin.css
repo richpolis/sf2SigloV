@@ -1,0 +1,72 @@
+/* 
+    Created on : 17/04/2014, 12:16:33 PM
+    Author     : richpolis
+*/
+
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('/images/page-loader.gif') 50% 50% no-repeat transparent;
+}
+
+.gallery li { 
+    float: left; 
+    padding: 0.4em; 
+    margin: 0 0.4em 0.4em 0; 
+    text-align: center; 
+    list-style-type: none; 
+    width: 145px;
+    min-height: 145px;
+    position: relative;
+}
+.gallery li h5 { 
+    margin: 0 0 0.4em; 
+    cursor: move; 
+    font-size: small; 
+    font-weight: normal; 
+    background-color: #00438A;
+    color: white;
+    
+}
+.gallery li img {  
+    max-width: 145px;
+    max-height: 90px;
+    cursor: move; 
+}
+
+.gallery li p {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+}
+
+.pagination ul li a{
+    color: black;
+}
+
+.galeria-item-li{
+     border: 1px solid gray;
+    
+}
+
+.tipo-categoria{
+    height: 20px;
+    margin-bottom: 5px;
+}
+
+#map { 
+  width:80%; 
+  height:400px; 
+  padding: 0 10%;
+}
+
+.image-dialog{
+    max-width: 300px;
+    max-height: 250px;
+}

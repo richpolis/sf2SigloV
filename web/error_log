@@ -1,0 +1,3 @@
+[24-Apr-2014 10:21:31 America/Mexico_City] PHP Notice:  Undefined variable: statusCode in /home/phrenesi/public_html/sf2siglov/src/Richpolis/PublicacionesBundle/Controller/PublicacionesController.php on line 321
+[24-Apr-2014 12:03:57 America/Mexico_City] PHP Notice:  Undefined variable: request in /home/phrenesi/public_html/sf2siglov/src/Richpolis/PublicacionesBundle/Controller/CategoriasController.php on line 487
+[24-Apr-2014 12:03:57 America/Mexico_City] PHP Fatal error:  Call to a member function getRequestFormat() on a non-object in /home/phrenesi/public_html/sf2siglov/src/Richpolis/PublicacionesBundle/Controller/CategoriasController.php on line 487
